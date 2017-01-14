@@ -42,4 +42,7 @@
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
 
+
+    <!-- CardView -->
+    <string name="pizza_iamgetext">Image not loaded</string>
 </resources>

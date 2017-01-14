@@ -9,7 +9,7 @@ public class Pizza {
     private String mName;
     private int mImageID;
 
-    private static final Pizza[] mPizzas = {
+    public static final Pizza[] mPizzas = {
         new Pizza("Diavolo", R.drawable.diavolo),
         new Pizza("Funhi", R.drawable.funghi)
     };

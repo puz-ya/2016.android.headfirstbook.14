@@ -1,6 +1,7 @@
 package com.yd.pizzamaterialdesign;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ public class PizzaMaterialFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_pizza_material, container, false);
@@ -42,6 +43,16 @@ public class PizzaMaterialFragment extends Fragment {
         CaptionedImagesAdapter captionedImagesAdapter = new CaptionedImagesAdapter(pizzaNames,pizzaImagesID);
         RecyclerView pizzaRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_pizza_material, container, false);
         pizzaRecycler.setAdapter(captionedImagesAdapter);
+
+        //set onClickListener
+        captionedImagesAdapter.setListener(new CaptionedImagesAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(getActivity(), PizzaDetailActivity.class);
+                intent.putExtra(PizzaDetailActivity.EXTRA_MESSAGE, position);
+                getActivity().startActivity(intent);
+            }
+        });
 
         //set view\type of RecyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());

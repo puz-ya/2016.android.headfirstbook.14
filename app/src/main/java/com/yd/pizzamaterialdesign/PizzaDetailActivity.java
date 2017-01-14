@@ -27,11 +27,11 @@ public class PizzaDetailActivity extends Activity {
         int pizzaN = getIntent().getExtras().getInt(EXTRA_MESSAGE,0);
 
         String pizzaName = Pizza.mPizzas[pizzaN].getName();
-        TextView textView = (TextView) findViewById(R.id.text_pizza);
+        TextView textView = (TextView) findViewById(R.id.detail_text);
         textView.setText(pizzaName);
 
         int pizzaImage = Pizza.mPizzas[pizzaN].getImageResourceId();
-        ImageView imageView = (ImageView) findViewById(R.id.image_pizza);
+        ImageView imageView = (ImageView) findViewById(R.id.detail_image);
         imageView.setImageResource(pizzaImage);
         imageView.setContentDescription(pizzaName);
 
@@ -42,7 +42,7 @@ public class PizzaDetailActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         //name of pizza in Share buttonn
-        TextView tv = (TextView) findViewById(R.id.text_pizza);
+        TextView tv = (TextView) findViewById(R.id.detail_text);
         String textTV = tv.getText().toString();
 
         //new intent to Order

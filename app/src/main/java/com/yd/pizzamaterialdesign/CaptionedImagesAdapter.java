@@ -1,11 +1,10 @@
 package com.yd.pizzamaterialdesign;
 
 import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.provider.ContactsContract;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,11 +17,19 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
 
     private String[] mCaptions;
     private int[] mImagesIDs;
+    private Listener mListener; //Listener is OUR type of interface
 
     //constructor for incoming data
     public CaptionedImagesAdapter(String[] strings, int[] ints){
         mCaptions = strings;
         mImagesIDs = ints;
+    }
+
+    public static interface Listener{
+        public void onClick(int position);
+    }
+    public void setListener(Listener listener){
+        mListener = listener;
     }
 
     //link to Views in RecyclerView
@@ -44,9 +51,9 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position){
+    public void onBindViewHolder(final ViewHolder holder, final int position){
         //filling Views with Data
-        CardView cardView = holder.mCardView;
+        final CardView cardView = holder.mCardView;
 
         ImageView imageView = (ImageView) cardView.findViewById(R.id.image_pizza);
         Drawable drawable = cardView.getResources().getDrawable(mImagesIDs[position]);
@@ -56,6 +63,16 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
 
         TextView textView = (TextView) cardView.findViewById(R.id.text_pizza);
         textView.setText(mCaptions[position]);
+
+        //set up onClick
+        cardView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(mListener != null){
+                    mListener.onClick(holder.getAdapterPosition());
+                }
+            }
+        });
     }
 
     @Override

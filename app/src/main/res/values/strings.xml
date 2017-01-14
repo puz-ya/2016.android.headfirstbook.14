@@ -44,5 +44,5 @@
 
 
     <!-- CardView -->
-    <string name="pizza_iamgetext">Image not loaded</string>
+    <string name="pizza_imagetext">Image not loaded</string>
 </resources>

@@ -40,7 +40,7 @@ public class PizzaMaterialFragment extends Fragment {
 
         //set Adapter to RecyclerView
         CaptionedImagesAdapter captionedImagesAdapter = new CaptionedImagesAdapter(pizzaNames,pizzaImagesID);
-        RecyclerView pizzaRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_pizza, container, false);
+        RecyclerView pizzaRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_pizza_material, container, false);
         pizzaRecycler.setAdapter(captionedImagesAdapter);
 
         //set view\type of RecyclerView
